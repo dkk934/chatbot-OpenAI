@@ -11,6 +11,16 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ error: "Missing 'message' in request body" });
   }
 
+  try {
+    const reply = await getAIResponse(message);
+    res.json({ reply });
+  } catch (err) {
+    console.error("OpenAI request failed:", err);
+    res
+      .status(500)
+      .json({ error: "OpenAI request failed", details: err?.message });
+  }
+
   const reply = await getAIResponse(message);
   res.json({ reply });
 });
