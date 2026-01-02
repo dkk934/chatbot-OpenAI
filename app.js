@@ -2,7 +2,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import chatRoute from "./chat.js";
+import chatRoute from "./module/chatBot";
 
 // Load environment variables from .env
 dotenv.config();
